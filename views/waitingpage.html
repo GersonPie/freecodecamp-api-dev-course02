@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wait 30s</title>
+</head>
+<body>
+    <section>
+        aguarde <span id="counter">-</span>
+    </section>
+
+
+
+    <script>
+        const waiting_time = 5000
+        var time = waiting_time/1000
+        setTimeout(redirect, waiting_time)
+        function runTimer(){
+            const timerDisplay = document.querySelector('#counter');
+            const timer = setInterval(()=>{
+                if(time === 0)return clearInterval(timer);
+                time--
+                timerDisplay.textContent = time;
+            }, 1000)
+
+        }
+        runTimer()
+
+
+        function redirect(){
+            const payload = {
+                waited: waiting_time - time
+            }
+
+            location.href = location.href.replace('wait', 'redirect')
+        }
+    </script>
+</body>
+</html>
